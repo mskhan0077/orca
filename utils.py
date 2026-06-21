@@ -1,6 +1,8 @@
 import numpy as np
 from dataclasses import dataclass
 
+EPS = 1e-5
+
 
 @dataclass
 class Line:
@@ -144,7 +146,7 @@ def linear_program_3(lines, num_obst_lines, begin_line, radius, result):
 
 def compute_new_velocity(agent, lines, num_static):
     pref = agent.preferred_velocity()
-    fail, result = linear_program_2(lines, num_static, fail, agent.max_speed, result)
-    if fail > len(lines):
+    fail, result = linear_program_2(lines, agent.max_speed, pref, False)
+    if fail < len(lines):
         result = linear_program_3(lines, num_static, fail, agent.max_speed, result)
     return result

@@ -1,5 +1,7 @@
 import numpy as np
 from env.base import Simulator
+from env.utils import animate, plot_traj
+from env import circle, crossing
 
 def run(sim,
         max_steps):
@@ -13,16 +15,34 @@ def run(sim,
 
 
 dt = 0.1
-time_horizon = 5.0
-neighbour_dist = 10.0
-max_steps = 300
+time_horizon = 1.0
+max_steps = 350
+n = 5
 
-sim = Simulator(dt=dt,
-                time_horizon=time_horizon,
-                neighbour_dist=neighbour_dist)
+
+# sim = circle.circle(n=n,
+#                     radius=12,
+#                     agent_radius=1.0,
+#                     dt=dt,
+#                     time_horizon=time_horizon,
+#                     max_speed=2.0,
+#                     pref_speed=1.5)
+sim = crossing.crossing(dt=dt,
+                        time_horizon=time_horizon,
+                        max_speed=1.0,
+                        pref_speed=0.5)
 
 history = run(sim,
               max_steps=max_steps)
+
+animate.animate(sim=sim,
+                history=history,
+                path="crossing.gif")
+plot_traj.plot_trajectories(sim=sim,
+                            history=history,
+                            path="crossing.png")
+
+
 
 
 
