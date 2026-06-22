@@ -3,10 +3,10 @@ from .base import Simulator
 from .agent import Agent
 
 
-def obstacle(dt,
-             time_horizon,
-             max_speed,
-             pref_speed):
+def obstacle(dt=0.1,
+             time_horizon=5.0,
+             max_speed=2.0,
+             pref_speed=1.4):
     sim = Simulator(dt, time_horizon)
     for ox in (-2.0, 2.0):
         sim.add(Agent([ox, 0.0], [ox, 0.0], radius=1.2, max_speed=0.0, pref_speed=0.0, static=True))

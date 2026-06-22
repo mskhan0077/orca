@@ -3,13 +3,13 @@ from .base import Simulator
 from .agent import Agent
 
 
-def circle(n, 
-           radius, 
-           agent_radius, 
-           dt, 
-           time_horizon,
-           max_speed,
-           pref_speed, 
+def circle(n,
+           radius,
+           agent_radius,
+           dt=0.1,
+           time_horizon=5.0,
+           max_speed=2.0,
+           pref_speed=1.4,
            seed=42):
     rng = np.random.default_rng(seed)
     sim = Simulator(dt, time_horizon)

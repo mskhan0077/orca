@@ -3,10 +3,10 @@ from .agent import Agent
 from .base import Simulator
 
 
-def crossing(dt, 
-             time_horizon,
-             max_speed,
-             pref_speed):
+def crossing(dt=0.1,
+             time_horizon=5.0,
+             max_speed=2.0,
+             pref_speed=1.4):
     sim = Simulator(dt, time_horizon)
     for i in range(5):
         y = i * 1.5 - 3

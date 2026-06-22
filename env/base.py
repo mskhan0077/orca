@@ -37,7 +37,7 @@ class Simulator:
 
 
     def all_reached(self,
-                    tol=0.2):
+                    tol=0.25):
         return all(a.static or np.linalg.norm(a.goal - a.pos) < tol for a in self.agents)
 
 
@@ -63,6 +63,8 @@ class Simulator:
             a.new_vel = utils.compute_new_velocity(a, lines, num_static)
 
         for a in self.agents:
+            if a.static:
+                continue
             a.vel = a.new_vel
             a.pos = a.pos + a.vel * self.dt
 

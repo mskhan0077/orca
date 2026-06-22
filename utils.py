@@ -45,8 +45,8 @@ def compute_orca_lines(agent, others, time_horizon, dt):
                     direction = np.array([rel_pos[0] * leg - rel_pos[1] * r,
                                           rel_pos[0] * r + rel_pos[1] * leg]) / dist_sq
                 else:
-                    direction = np.array([rel_pos[0] * leg - rel_pos[1] * r,
-                                          -rel_pos[0] * r + rel_pos[1] * leg]) / dist_sq
+                    direction = -np.array([rel_pos[0] * leg + rel_pos[1] * r,
+                                           -rel_pos[0] * r + rel_pos[1] * leg]) / dist_sq
                 u = (rel_vel @ direction) * direction - rel_vel
         
         else:
